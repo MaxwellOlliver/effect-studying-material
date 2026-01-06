@@ -11,6 +11,7 @@ const leftValue = Either.left("Left value");
 const getUser = Effect.gen(function* () {
   const gh = yield* GithubService;
 
+  // We can use the `either` combinator to convert the Effect<GithubUser, Error> to an Effect<Either<GithubUser, Error>>
   const userResult = yield* gh.findUser("user123123123").pipe(Effect.either);
 
   if (Either.isRight(userResult)) {
@@ -22,6 +23,7 @@ const getUser = Effect.gen(function* () {
 
 Effect.runPromise(
   getUser.pipe(
+    // Effect.provide(GithubServiceLive),
     Effect.provide(GithubServiceMock),
     Effect.tap((result) => {
       if (Either.isRight(result)) {
