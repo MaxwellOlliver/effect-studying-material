@@ -133,4 +133,3 @@ const program = readFile("example.txt");
 ```
 
 Sadly, typescript cannot infer the type of the callback function's arguments, so you need to provide the type explicitly.
-W

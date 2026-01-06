@@ -1,6 +1,6 @@
 import { Context, Effect } from "effect";
 
-interface GithubUser {
+export interface GithubUser {
   id: string;
   name: string;
 }
